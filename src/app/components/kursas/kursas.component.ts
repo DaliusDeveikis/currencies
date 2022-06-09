@@ -27,7 +27,8 @@ export class KursasComponent implements OnInit {
     },
       error: (error) => {
         this.err = true
-        this.error = error.statusText
+        this.error = error.name
+        console.log(error)
       }
     })
    }
