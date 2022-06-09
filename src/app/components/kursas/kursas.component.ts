@@ -11,16 +11,17 @@ export class KursasComponent implements OnInit {
 
   public kursas: Kursas|null = null
 
-  constructor(private kursasService: KursasService) { }
+  constructor(
+    private kursasService: KursasService
+    ) { }
 
-  private converter() {
-    this.kursasService.get().subscribe((result)=> {
+  public converter(n:any) {
+    this.kursasService.get(Number(n)).subscribe((result)=> {
       this.kursas = result
     })
    }
 
   ngOnInit(): void {
-    this.converter();
   }
 
 }

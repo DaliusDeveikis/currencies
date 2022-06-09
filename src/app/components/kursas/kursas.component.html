@@ -1,4 +1,13 @@
 <div class="card">
+  <input
+    type="number"
+    class="form-control"
+    placeholder="Enter EUR amount"
+    #inputValue
+  />
+  <button class="btn btn-info" (click)="converter(inputValue.value)">
+    Convert
+  </button>
   <div class="card-body">
     <i>{{ kursas?.base }}: {{ kursas?.amount }}</i>
     USD: {{ kursas?.rates?.USD }}
