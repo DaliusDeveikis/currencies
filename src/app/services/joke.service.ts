@@ -9,7 +9,7 @@ export class JokeService {
 
   constructor(private http: HttpClient) { }
 
-  public getJoke() {
-    return this.http.get<Joke>('https://v2.jokeapi.dev/joke/Programming?type=single')
-  }
+  // public getJoke() {
+  //   return this.http.get<Joke>('https://v2.jokeapi.dev/joke/Programming?type=single')
+  // }
 }

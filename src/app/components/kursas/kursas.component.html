@@ -8,11 +8,21 @@
   <button class="btn btn-info" (click)="converter(inputValue.value)">
     Convert
   </button>
-  <div class="card-body">
+
+  <div
+    class="card-body p-3 mb-2 bg-warning text-white"
+    *ngIf="kursas != null && loading && !err"
+  >
+    <i>Loading....</i>
+  </div>
+  <div class="card-body" *ngIf="kursas != null && !loading">
     <i>{{ kursas?.base }}: {{ kursas?.amount }}</i>
     USD: {{ kursas?.rates?.USD }}
   </div>
-  <div class="card-body">
+  <div class="card-body" *ngIf="kursas != null && !loading">
     Data: <i>{{ kursas?.date }}</i>
+  </div>
+  <div class="card-body p-3 mb-2 bg-danger text-white" *ngIf="err">
+    Error: <i>{{ error }}</i>
   </div>
 </div>
