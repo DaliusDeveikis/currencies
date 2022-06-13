@@ -11,33 +11,33 @@ import { JokeService } from 'src/app/services/joke.service';
 export class JokeComponent implements OnInit {
 
   public joke:Joke|null = null
-  public loading = true
   public error = false
+  public categories: string[] = []
+  public category: string = ""
+  public type: string = "Any"
 
   constructor(private jokeService: JokeService) {
     
    }
 
-  //  private loadJoke() {
-  //   this.loading = true
-  //   this.jokeService.getJoke().subscribe({
-  //     next:(result)=> {
-  //     this.joke = result
-  //     this.loading = false
-  //   },
-  //   error: (error)=> {
-  //     console.log(error)
-  //     this.error = true
-  //   }
-  //   })
-  //  }
+   private loadJoke() {
+    this.jokeService.getJoke(this.category,this.type).subscribe({
+      next:(result)=> {
+      this.joke = result
+    },
+    error: (error)=> {
+      this.error = true
+    }
+    })
+   }
 
-  //  public nextJoke() {
-  //    this.loadJoke()
-  //  }
+   public nextJoke() {
+     this.loadJoke()
+   }
 
   ngOnInit(): void {
-    // this.loadJoke()
+    this.categories = this.jokeService.getCategories()
+    this.loadJoke()
   }
 
 

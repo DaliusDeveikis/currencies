@@ -3,9 +3,25 @@
     type="number"
     class="form-control"
     placeholder="Enter EUR amount"
-    #inputValue
+    [(ngModel)]="amount"
   />
-  <button class="btn btn-info" (click)="converter(inputValue.value)">
+  <div class="mb-3">
+    <label class="form-label">Valiuta:</label>
+    <select class="form-control" [(ngModel)]="from">
+      <option *ngFor="let from of currencyList" [value]="from">
+        {{ from }}
+      </option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Valiuta:</label>
+    <select class="form-control" [(ngModel)]="to">
+      <option *ngFor="let to of currencyList" [value]="to">
+        {{ to }}
+      </option>
+    </select>
+  </div>
+  <button class="btn btn-info" (click)="converter(amount, from, to)">
     Convert
   </button>
 
@@ -16,8 +32,8 @@
     <i>Loading....</i>
   </div>
   <div class="card-body" *ngIf="kursas != null && !loading">
-    <i>{{ kursas?.base }}: {{ kursas?.amount }}</i>
-    USD: {{ kursas?.rates?.USD }}
+    <i>{{ from }}: {{ kursas?.amount }}</i>
+    {{ to }}: {{ resultt }}
   </div>
   <div class="card-body" *ngIf="kursas != null && !loading">
     Data: <i>{{ kursas?.date }}</i>

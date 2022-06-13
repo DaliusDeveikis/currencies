@@ -9,9 +9,16 @@ export class KursasService {
 
   constructor(private http: HttpClient) { }
 
-  public get(eur:number) {
+  public get(eur:number, from:string, to:string) {
     const host = 'api.frankfurter.app'
-    return this.http.get<Kursas>(`https://${host}/latest?amount=${eur}&from=EUR&to=USD`)
+    return this.http.get<Kursas>(`https://${host}/latest?amount=${eur}&from=${from}&to=${to}`)
   }
+
+  public getCurrencies(from:string) {
+    const host = 'api.frankfurter.app'
+    return this.http.get<Kursas>(`https://${host}/latest?from=${from}`)
+  }
+
+
 }
 
