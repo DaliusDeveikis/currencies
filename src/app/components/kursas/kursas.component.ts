@@ -24,9 +24,9 @@ export class KursasComponent implements OnInit {
     ) { }
 
 
-  public converter(amount:number, from:string, to:string) {
+  public converter(amount:number) {
     this.loading = true
-    this.kursasService.get(Number(amount), from, to).subscribe({
+    this.kursasService.get(Number(amount), this.from, this.to).subscribe({
       next:(result)=> {
       this.resultt = result.rates[this.to]
       this.kursas = result
